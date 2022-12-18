@@ -47,6 +47,7 @@ async function renderOrderDetails(data) {
     '<div class="order-details-title fw-bold">Order Details</div>';
   var ProductDetails = {
     cost: 0,
+    sum : 0
   };
   for (i = 0; i < data.length; i++) {
     let Name = [];
@@ -64,6 +65,7 @@ async function renderOrderDetails(data) {
           //   ProductDetails.rate = data.data[0].cost;
           Name.push(data.data[0].name);
           ProductDetails.cost = data.data[0].cost;
+          ProductDetails.sum += data.data[0].cost;
         }
       })
       .catch((error) => {
@@ -95,7 +97,7 @@ async function renderOrderDetails(data) {
     '<div class="price-details-item d-flex flex-row justify-content-between">' +
     "<div>Price</div>" +
     "<div>&#8377; " +
-    ProductDetails.cost +
+    ProductDetails.sum +
     "</div>" +
     "</div>" +
     '<div class="price-details-item d-flex flex-row justify-content-between">' +
@@ -109,7 +111,7 @@ async function renderOrderDetails(data) {
     '<div class="price-details-item d-flex flex-row justify-content-between">' +
     "<div>Total</div>" +
     "<div>&#8377; " +
-    ProductDetails.cost +
+    ProductDetails.sum +
     "</div>" +
     "</div>" +
     "</div>";
